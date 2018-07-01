@@ -1,23 +1,26 @@
-# monero-nodejs
+# electroneum-rpc-nodejs
 
-A Node.js wallet manager for interacting with `monero-wallet-rpc`.
+A Node.js wallet manager for interacting with `electroneum-wallet-rpc`.
 
-For more information about Monero, visit: https://getmonero.org
+For more information about Electroneum, visit: https://electroneum.com
 
-If you found this useful, please consider [contributing](https://getmonero.org/get-started/contributing/) to the Monero Project!
+This project is based on PsychicCat's project available at this address : https://github.com/PsychicCat/monero-nodejs
+
+I decided to fork and modify monero-nodejs to make a few changes so it works with Electroneum.
+
 
 ## Install the package
 
 ### via NPM
 
 ```
-npm install monero-nodejs
+npm install electroneum-rpc-nodejs
 ```
 
 ### Or clone the Github repository
 
 ```
-git clone https://github.com/PsychicCat/monero-nodejs.git
+git clone https://github.com/Unyxos/electroneum-rpc-nodejs.git
 ```
 
 ## Initializing a wallet
@@ -25,27 +28,27 @@ git clone https://github.com/PsychicCat/monero-nodejs.git
 Require the module:
 
 ```
-var moneroWallet = require('monero-nodejs');
+var electroneumWallet = require('electroneum-rpc-nodejs');
 ```
 
 Create a new instance of the wallet:
 
 ```
-var Wallet = new moneroWallet();
+var Wallet = new electroneumWallet();
 ```
 
 This creates a wallet using the following simplewallet default RPC settings:
 
 * `hostname` - '127.0.0.1'
-* `port` - 18082
+* `port` - 34569
 
 To connect to a wallet with different settings, pass in the values:
 
 ```
-var Wallet = new moneroWallet($HOSTNAME, $PORT);
+var Wallet = new electroneumWallet($HOSTNAME, $PORT);
 ```
 
-**Note: versions of monero-nodejs prior to 3.0 require `hostname` with the 'http://' prefix, 3.0 and greater only require the IP address.**
+**Note: versions of monero-nodejs prior to 3.0 require `hostname` with the 'http://' prefix, 3.0 and greater only require the IP address, see https://github.com/PsychicCat/monero-nodejs**
 
 ## Testing
 
@@ -68,7 +71,7 @@ npm test
 Usage:
 
 ```
-Wallet.create_wallet('monero_wallet', '', 'English');
+Wallet.create_wallet('electroneum_wallet', '', 'English');
 ```
 
 Creates a new wallet.
@@ -92,7 +95,7 @@ Returns an object with `error` field if unsuccessful.
 Usage:
 
 ```
-Wallet.open_wallet('monero_wallet', '');
+Wallet.open_wallet('electroneum_wallet', '');
 ```
 
 Opens a wallet.
@@ -118,12 +121,12 @@ Usage:
 Wallet.balance();
 ```
 
-Responds with the current balance and unlocked (spendable) balance of the wallet in atomic units. Divide by 1e12 to convert.
+Responds with the current balance and unlocked (spendable) balance of the wallet in atomic units. Divide by 1e2 to convert.
 
 Example response:
 
 ```
-{ balance: 3611980142579999, unlocked_balance: 3611980142579999 }
+{ balance: 1264741791908, unlocked_balance: 1264714739257 }
 ```
 
 ### address
@@ -134,12 +137,12 @@ Usage:
 Wallet.address();
 ```
 
-Responds with the Monero address of the wallet.
+Responds with the Electroneum address of the wallet.
 
 Example response:
 
 ```
-{ address: '44AFFq5kSiGBoZ4NMDwYtN18obc8AemS33DBLWs3H7otXft3XjrpDtQGv7SqSsaBYBb98uNbr2VBBEt7f2wfn3RVGQBEP3A' }
+{ address: 'etnkBd7xrtzUp1M81SvhHP5mGUWUwXsTMNtsjqaCbF7C31dTgE9vW49MgwLgySsVPpc3ErPFaeWFoA8NjoYUSZrf2yafVCGJgu' }
 ```
 
 ### transfer
@@ -157,7 +160,6 @@ Parameters:
 * `destinations` - an object OR an array of objects in the following format: `{amount: (*number*), address: (*string*)}`
 * `options` - an object with the following properties (_optional_)
   {
-  mixin: (_number_), // amount of existing transaction outputs to mix yours with (default is 4)
   unlockTime: (_number_), // number of blocks before tx is spendable (default is 0)
   pid: (_string_) // optional payment ID (a 64 character hexadecimal string used for identifying the sender of a payment)
   payment*id: (\_string*) // optional payment ID (a 64 character hexadecimal string used for identifying the sender of a payment)
@@ -170,7 +172,7 @@ Parameters:
 Example response:
 
 ```
-{ tx_hash: '<b9272a68b0f242769baa1ac2f723b826a7efdc5ba0c71a2feff4f292967936d8>', tx_key: '' }
+{ tx_hash: '<bb2ace539e2ed152ca8410d175efc40ef0f0193959052d55a3d79626215dce58>', tx_key: '' }
 ```
 
 ### transferSplit
@@ -190,7 +192,7 @@ Additional property available for the `options` parameter:
 Example response:
 
 ```
-{ tx_hash_list: [ '<f17fb226ebfdf784a0f5814e1c5bb78c19ea26930a0d706c9dc1085a250ceb37>' ] }
+{ tx_hash_list: [ '<bb2ace539e2ed152ca8410d175efc40ef0f0193959052d55a3d79626215dce58>' ] }
 ```
 
 ### sweep_dust
@@ -206,7 +208,7 @@ Sends all dust outputs back to the wallet, to make funds easier to spend and mix
 Example response:
 
 ```
-{ tx_hash_list: [ '<75c666fc96120a643321a5e76c0376b40761582ee40cc4917e8d1379a2c8ad9f>' ] }
+{ tx_hash_list: [ '<bb2ace539e2ed152ca8410d175efc40ef0f0193959052d55a3d79626215dce58>' ] }
 ```
 
 ### sweep_all
@@ -214,7 +216,7 @@ Example response:
 Usage:
 
 ```
-Wallet.sweep_all('44AFFq5kSiGBoZ4NMDwYtN18obc8AemS33DBLWs3H7otXft3XjrpDtQGv7SqSsaBYBb98uNbr2VBBEt7f2wfn3RVGQBEP3A');
+Wallet.sweep_all('etnkBd7xrtzUp1M81SvhHP5mGUWUwXsTMNtsjqaCbF7C31dTgE9vW49MgwLgySsVPpc3ErPFaeWFoA8NjoYUSZrf2yafVCGJgu');
 ```
 
 Sends all spendable outputs to the specified address. Responds with a list of the corresponding transaction hashes.
@@ -222,7 +224,7 @@ Sends all spendable outputs to the specified address. Responds with a list of th
 Example response:
 
 ```
-{ tx_hash_list: [ '<75c666fc96120a643321a5e76c0376b40761582ee40cc4917e8d1379a2c8ad9f>' ] }
+{ tx_hash_list: [ '<bb2ace539e2ed152ca8410d175efc40ef0f0193959052d55a3d79626215dce58>' ] }
 ```
 
 ### getPayments
@@ -326,7 +328,8 @@ Example response:
 
 ```
 { payment_id: '<61eec5ffd3b9cb57>',
-  standard_address: '44AFFq5kSiGBoZ4NMDwYtN18obc8AemS33DBLWs3H7otXft3XjrpDtQGv7SqSsaBYBb98uNbr2VBBEt7f2wfn3RVGQBEP3A' }
+  standard_address: 'etnkBd7xrtzUp1M81SvhHP5mGUWUwXsTMNtsjqaCbF7C31dTgE9vW49MgwLgySsVPpc3ErPFaeWFoA8NjoYUSZrf2yafVCGJgu' }
+  
 ```
 
 ### height

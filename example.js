@@ -3,11 +3,11 @@ var Wallet = new moneroWallet();
 
 // examples
 
-Wallet.create_wallet('monero_wallet').then(function(result){
+Wallet.create_wallet('electroneum_wallet').then(function(result){
     console.log(result);
 });
 
-Wallet.open_wallet('monero_wallet').then((result) => {
+Wallet.open_wallet('electroneum_wallet').then((result) => {
     console.log(result);
 });
 
