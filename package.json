@@ -1,38 +1,35 @@
 {
-  "name": "monero-nodejs",
-  "version": "4.0.0",
-  "description": "A Monero library written in Node.js.",
-  "main": "./lib/wallet.js",
+  "name": "electroneum-rpc-nodejs",
+  "version": "1.0.0",
+  "description": "A Electroneum library written in Node.js, based on PsychicCat's project",
+  "main": "lib/wallet.js",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
   "scripts": {
-    "test": "node_modules/.bin/mocha"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/PsychicCat/monero-nodejs.git"
+    "url": "git+https://github.com/Unyxos/electroneum-rpc-nodejs.git"
   },
   "keywords": [
-    "Monero",
-    "crypto",
-    "currency",
-    "poloniex",
-    "shapeshift",
+    "Electroneum",
     "cryptocurrency",
-    "Node.js",
-    "monero-wallet-rpc",
-    "bitcoin",
-    "bitmonerod"
+    "crypto",
+    "wallet",
+    "electroneum-wallet-rpc",
+    "electroneum-nodejs",
+    "etn"
   ],
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/PsychicCat/monero-nodejs/issues"
+    "url": "https://github.com/Unyxos/electroneum-rpc-nodejs/issues"
   },
-  "homepage": "https://github.com/PsychicCat/monero-nodejs#readme",
+  "homepage": "https://github.com/Unyxos/electroneum-rpc-nodejs#readme",
   "dependencies": {
     "request": "^2.85.0",
     "request-promise": "^4.2.2"
-  },
-  "devDependencies": {
-    "mocha": "^2.4.5",
-    "should": "^8.3.0"
   }
 }
