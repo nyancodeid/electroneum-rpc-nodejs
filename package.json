@@ -2,11 +2,7 @@
   "name": "electroneum-rpc-nodejs",
   "version": "1.1.0",
   "description": "A Electroneum library written in Node.js, based on PsychicCat's project",
-  "main": "lib/wallet.js",
-  "directories": {
-    "lib": "lib",
-    "test": "test"
-  },
+  "main": "./lib/wallet.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
