@@ -48,7 +48,6 @@ To connect to a wallet with different settings, pass in the values:
 var Wallet = new electroneumWallet($HOSTNAME, $PORT);
 ```
 
-**Note: versions of monero-nodejs prior to 3.0 require `hostname` with the 'http://' prefix, 3.0 and greater only require the IP address, see https://github.com/PsychicCat/monero-nodejs**
 
 ## Testing
 
@@ -66,52 +65,7 @@ npm test
 
 ## Wallet Methods
 
-### create_wallet
 
-Usage:
-
-```
-Wallet.create_wallet('electroneum_wallet', '', 'English');
-```
-
-Creates a new wallet.
-
-Parameters:
-
-* `filename` - filename of wallet to create (_string_)
-* `password` - wallet password (_string_)
-* `language` - language to use for mnemonic phrase (_string_)
-
-Example response:
-
-```
-{}
-```
-
-Returns an object with `error` field if unsuccessful.
-
-### open_walllet
-
-Usage:
-
-```
-Wallet.open_wallet('electroneum_wallet', '');
-```
-
-Opens a wallet.
-
-Parameters:
-
-* `filename` - filename of wallet to open (_string_)
-* `password` -wallet password (_string_)
-
-Example response:
-
-```
-{}
-```
-
-Returns an object with `error` field if unsuccessful.
 
 ### balance
 
